@@ -1,0 +1,74 @@
+-- Load Rayfield UI Library from Sirius
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+-- Create Window with smooth touch-toggle support for mobile
+local Window = Rayfield:CreateWindow({
+   Name = "Evade Mobile Hub",
+   LoadingTitle = "Loading Interface...",
+   LoadingSubtitle = "Rayfield Template",
+   Theme = "Default",
+   ConfigurationSaving = { Enabled = false },
+   KeySystem = false,
+   
+   -- Creates a floating touch button on mobile screens to minimize/open the UI
+   ToggleUI = true,
+   ToggleKey = Enum.KeyCode.K
+})
+
+-- Create Main Tab (Scrolling Frame)
+local MainTab = Window:CreateTab("Main Menu", 4483362458)
+
+-- Section 1: Toggles
+MainTab:CreateSection("Toggles")
+
+local Toggle1 = MainTab:CreateToggle({
+   Name = "Toggle Switch 1",
+   CurrentValue = false,
+   Flag = "ToggleFlag1",
+   Callback = function(Value)
+       -- Action runs when flipped ON/OFF
+   end,
+})
+
+local Toggle2 = MainTab:CreateToggle({
+   Name = "Toggle Switch 2",
+   CurrentValue = false,
+   Flag = "ToggleFlag2",
+   Callback = function(Value)
+       -- Action runs when flipped ON/OFF
+   end,
+})
+
+-- Section 2: Scroll Lines (Sliders)
+MainTab:CreateSection("Scroll Lines")
+
+local Slider1 = MainTab:CreateSlider({
+   Name = "Scroll Line 1",
+   Range = {0, 100},
+   Increment = 1,
+   CurrentValue = 0,
+   Flag = "SliderFlag1",
+   Callback = function(Value)
+       -- Action runs when slider value changes
+   end,
+})
+
+local Slider2 = MainTab:CreateSlider({
+   Name = "Scroll Line 2",
+   Range = {0, 100},
+   Increment = 1,
+   Suffix = " Speed",
+   CurrentValue = 16,
+   Flag = "SliderFlag2",
+   Callback = function(Value)
+       -- Action runs when slider value changes
+   end,
+})
+
+-- Display startup notification
+Rayfield:Notify({
+   Title = "UI Loaded",
+   Content = "Smooth transitions active!",
+   Duration = 3,
+   Image = 4483362458,
+})
